@@ -17,7 +17,7 @@ public class JogoDeCartasPifPaf {
         BARALHO.mostrarBaralho();
         BARALHO.embaralhar();
         BARALHO.setUltimaCarta(BARALHO.getCARTAS().length - 1);
-    }
+    } //Preparando o inicio do jogo, inicia carta, baralho e embaralha
 
     public void iniciarJogo() {
         jogadores = new Jogador[2];
