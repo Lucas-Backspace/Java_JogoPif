@@ -15,7 +15,7 @@ public class Jogador {
 
     public void mostrarCartas() {
         int indice = 0;
-        System.out.println("-----------CARTAS DE " + NOME.toUpperCase() + "------------------");
+        System.out.println("-----------CARTAS DE " + NOME.toUpperCase() + "-----------");
         for (Carta carta : cartas) {
             System.out.println("[" + indice + "] " + carta.toString());
             indice++;

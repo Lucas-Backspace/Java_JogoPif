@@ -28,7 +28,7 @@ public class JogoDeCartasPifPaf {
     }
 
     public void distribuirCartas(int qtdCartas) {
-        System.out.println("------DISTRIBUINDO BARALHO------\n");
+        System.out.println("-----------DISTRIBUINDO BARALHO-----------\n");
         for (Jogador jogadore : jogadores) {
             jogadore.setCartas(BARALHO.distribuirCartas(qtdCartas));
         }
@@ -75,7 +75,7 @@ public class JogoDeCartasPifPaf {
         int indice;
         mostrarCartasJogador(jogador);
         System.out.println("[9] " + carta.toString().toUpperCase());
-        System.out.println("\n------------------");
+        System.out.println("\n--------------------------------------------\n");
         System.out.println("[x] Ecolha o Indece da Carta para Descarte");
         indice = entrada.nextInt();
         // Se indice for 9, o metodo descarta a carta que acabou de ser adicionada
@@ -106,7 +106,7 @@ public class JogoDeCartasPifPaf {
             System.out.println("1 - Obter carta do baralho");
             System.out.println("2 - Obter carta do baralho de descartes");
             op = entrada.nextInt();
-            System.out.println("-------------------------------------------------------");
+            System.out.println("--------------------------------------------");
             // Metodo(Menu*) responsavel por obter as cartas de acordo com opçao selecionada
             switch (op) {
                 case 1:
@@ -122,7 +122,7 @@ public class JogoDeCartasPifPaf {
         }
         System.out.println("1 - Obter carta do baralho");
         op = entrada.nextInt();
-        System.out.println("-------------------------------------------------------\n");
+        System.out.println("--------------------------------------------\n");
 
         carta = obterCartaBaralho();
         return carta;
@@ -154,9 +154,9 @@ public class JogoDeCartasPifPaf {
         int confereVitoria; // tirei a inicialização para a IDE parar de reclamar
         do { //Menu visual para usuário solicitar a check de vitória
             for (Jogador jogador : jogadores) {
-                System.out.println("------------------");
+                System.out.println("\n---------------------------");
                 System.out.println("( " + jogador.getNOME().toUpperCase() + " )" + " Sua Vez de Jogar!");
-                System.out.println("------------------\n");
+                System.out.println("---------------------------\n");
                 Carta c = obterCarta();
                 descarte(c, jogador);
                 System.out.println("\n");

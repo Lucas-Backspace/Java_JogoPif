@@ -23,7 +23,7 @@ public class Baralho {
     }
 
     public void embaralhar() {
-        System.out.println("\t\tEMBARALHANDO\n");
+        // Embaralhando as cartas 
         int num, num2;
         Carta temp;
         for (int i = 0; i < CARTAS.length; i++) {
@@ -33,7 +33,7 @@ public class Baralho {
             CARTAS[num] = CARTAS[num2];
             CARTAS[num2] = temp;
         }
-        System.out.println("\t\t EMBARALHADO\n");
+        System.out.println("\tEMBARALHADO\n");
     }
 
     public Carta[] distribuirCartas(int qtdCartas) {
@@ -46,7 +46,7 @@ public class Baralho {
     }
 
     public void mostrarBaralho() {
-        System.out.println("------------APRESENTANDO BARALHO-----------------");
+        System.out.println("---------------APRESENTANDO BARALHO---------------");
         for (Carta carta : CARTAS) {
             System.out.println(carta.toString());
         }
