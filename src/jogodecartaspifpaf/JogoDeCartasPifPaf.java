@@ -144,11 +144,25 @@ public class JogoDeCartasPifPaf {
                 }
             }
         }
-    } //Verifica condição de vitoria da Trinca!
+    } //Verifica condição de vitoria da Trinca percorrendo as posições comparando!
 
-    public void vitSequencia() {
-
-    } //Verifica condição de vitoria da Sequencia!
+    public void vitSequencia(Jogador jogador){
+        for (int c = 0; c < 9; c++) {
+            Carta a = jogador.getCartas()[c];
+            for (int d = 0; d < 9; d++) {
+                Carta b = jogador.getCartas()[d];
+                if(b.getFace() == (a.getFace()+1) && a.getNaipe().equals(b.getNaipe())){
+                    for (int h = 0; h < 9; h++) {
+                        Carta e = jogador.getCartas()[h];
+                        if(e.getFace() == (b.getFace()+1) && b.getNaipe().equals(e.getNaipe())){
+                            vitoria++;
+                        }
+                    }  
+                }
+            }
+        }
+        
+    } //Verifica condição de vitoria da Sequencia percorrendo as posições comparando!
 
     public void jogar() {
         int confereVitoria; // tirei a inicialização para a IDE parar de reclamar
@@ -167,7 +181,7 @@ public class JogoDeCartasPifPaf {
                 if (confereVitoria == 1) { // Chama o método para verificar as consições de vitoria
                     vitTrinca(jogador);
                     if (vitoria != 3) {
-                        System.out.println("\nComparação de Vitória por Sequência!");
+                        System.out.println("\nComparação de Vitória!");
                         if (vitoria != 3) {
                             System.err.println("VOCÊ NÃO GANHOU!");
                             vitoria = 0;
