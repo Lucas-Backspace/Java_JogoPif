@@ -146,26 +146,26 @@ public class JogoDeCartasPifPaf {
         }
     } //Verifica condição de vitoria da Trinca percorrendo as posições comparando!
 
-    public void vitSequencia(Jogador jogador){
+    public void vitSequencia(Jogador jogador) {
         for (int c = 0; c < 9; c++) {
             Carta a = jogador.getCartas()[c];
             for (int d = 0; d < 9; d++) {
                 Carta b = jogador.getCartas()[d];
-                if(b.getFace() == (a.getFace()+1) && a.getNaipe().equals(b.getNaipe())){
+                if (b.getFace() == (a.getFace() + 1) && a.getNaipe().equals(b.getNaipe())) {
                     for (int h = 0; h < 9; h++) {
                         Carta e = jogador.getCartas()[h];
-                        if(e.getFace() == (b.getFace()+1) && b.getNaipe().equals(e.getNaipe())){
+                        if (e.getFace() == (b.getFace() + 1) && b.getNaipe().equals(e.getNaipe())) {
                             vitoria++;
                         }
-                    }  
+                    }
                 }
             }
         }
-        
+
     } //Verifica condição de vitoria da Sequencia percorrendo as posições comparando!
 
     public void jogar() {
-        int confereVitoria; // tirei a inicialização para a IDE parar de reclamar
+        int confereVitoria = 0; // tirei a inicialização para a IDE parar de reclamar
         do { //Menu visual para usuário solicitar a check de vitória
             for (Jogador jogador : jogadores) {
                 System.out.println("\n---------------------------");
@@ -178,22 +178,26 @@ public class JogoDeCartasPifPaf {
                 System.out.println("1 - SIM");
                 System.out.println("2 - NÃO");
                 confereVitoria = entrada.nextInt();
-                if (confereVitoria == 1) { // Chama o método para verificar as consições de vitoria
+                
+                if (confereVitoria == 1) {
                     vitTrinca(jogador);
-                    if (vitoria != 3) {
-                        System.out.println("\nComparação de Vitória!");
-                        if (vitoria != 3) {
-                            System.err.println("VOCÊ NÃO GANHOU!");
-                            vitoria = 0;
-                        }
+                    if (vitoria < 3) {
+                        vitSequencia(jogador);
                     }
-                    //condição que encerra o while
-                    if (vitoria == 3) {
-                        contadorVitoria = 33;
+                    if (vitoria < 3) {
+                        System.err.println("\t\tVOCÊ NÃO GANHOU!");
+                        vitoria = 0;
                     }
+                }
+                if (vitoria >= 3) {
+                    System.out.println("\t\t" + jogador.getNOME().toUpperCase() + " VOCÊ VENCEU");
+                    break;
                 }
             }
         } while (contadorVitoria <= 32);
+        if (contadorVitoria >= 32 && vitoria <= 3) {
+            System.out.println("AS CARTAS DO BARALHO ACABARAM, NEMHUM JOGADOR VENCEU!");
+        }
     }
 
     public Jogador[] getJogadores() {
@@ -206,6 +210,6 @@ public class JogoDeCartasPifPaf {
         executar.distribuirCartas(9);
         executar.mostrarCartas();
         executar.jogar();
-        
+
     } // Chamador de Funções!!!
 }
